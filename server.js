@@ -31,6 +31,7 @@ var Storage = {
   }
 
 };
+
 //create storage object extends Storage Object 
 //storage.users creates an empty array
 var createStorage = function() {
@@ -102,7 +103,7 @@ app.post('/items', jsonParser, function(request, response) {
 
 app.delete('/items/:id',function(request, response){
   
-   //console.log("clicked id "+request.params.id);//this gives me the id of what i clicked on 
+   console.log("clicked id "+request.params.id);//this gives me the id of what i clicked on 
   // console.log("Look at me "+storage.items[request.params.id-1].id);//this is the index using that id -1 since that id starts at 1 
   // console.log(storage.items);//this is the array of itmes in the items array 
   var item = parseInt(request.params.id)
