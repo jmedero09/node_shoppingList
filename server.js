@@ -1,5 +1,7 @@
 var express = require('express');
 
+var app = express();
+
 var bodyParser = require('body-parser');
 
 var jsonParser = bodyParser.json();
@@ -36,7 +38,7 @@ var Storage = {
 //storage.users creates an empty array
 var createStorage = function() {
   var storage = Object.create(Storage);
-  //storage.items   = [];
+  storage.items   = [];
   storage.users = [];
   storage.setId = 1;
   return storage;
@@ -56,16 +58,15 @@ storage.add('things',storage.users[1]);
 
 console.log("this is whats in your storage.users "+storage.users[0]);
 
-//creates an instance of express similar to using the new keyword
-//this is where we start creating our routes using express.js
-var app = express();
 
+
+//this is a call to the index.html file that is in the public folder 
 app.use(express.static('public'));
 
 app.get('/items', function(request, response) {
 
     //this returns the updatd array of items
-    response.json(storage.items);
+    response.json(storage.users);
 });
 
 app.get('/users', function(request, response){
@@ -89,16 +90,17 @@ app.get('/users/:name', function(request, response){
 });
 
 app.post('/items', jsonParser, function(request, response) {
-    if (!('name' in request.body)) {
-        return response.sendStatus(400);
 
+    if (!('name' in request.body)) {
+
+        return response.sendStatus(400);
     }
 
-    var item = storage.add(request.body.name);
+    var item = storage.add(request.body.name,storage.users[0]);
 
     console.log(request.body);
 
-    response.status(201).json(item);
+    response.status(201).json(storage.users);
 });
 
 app.delete('/items/:id',function(request, response){
@@ -134,7 +136,6 @@ app.put('/items/:id',jsonParser,function(request, response){
 
         storage.items[i] = updated;
 
-              
     } 
   }
 
