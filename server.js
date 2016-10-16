@@ -48,6 +48,7 @@ var createStorage = function() {
 }
 
 //Registerd two users Alex and Jesus
+
 var storage = createStorage();
 storage.register('Alex');
 storage.register('Jesus');
@@ -118,11 +119,12 @@ app.post('/items', jsonParser, function(request, response) {
 //This route will delete an items from Alex's list of array items
 //Again this was set up like this as to allow for expansion test data 
 app.delete('/items/:id',function(request, response){
-  
-  //this gives me the id of what i clicked on 
-  // console.log("Look at me "+storage.items[request.params.id-1].id);//this is the index using that id -1 since that id starts at 1 
-  // console.log(storage.items);//this is the array of itmes in the items array 
 
+//sets the variable item to be the id of whatever the user clicked on
+//we parse this because it is currently a string and we will be comapring
+//it to a number. I then loop through Alexs array of items to see if i have
+//a matching id and if i do i remove that item from that given location 
+//then i respond back to the user with the updated list 
   var item = parseInt(request.params.id)
 
   for(var i = 0;i < storage.users[0].items.length;i++){
@@ -144,8 +146,6 @@ app.put('/items/:id',jsonParser,function(request, response){
   var item = parseInt(request.params.id);
 
   var updated = request.body;
-
-  console.log(updated);
 
   for(var i = 0;i < storage.users[0].items.length;i++){
 
