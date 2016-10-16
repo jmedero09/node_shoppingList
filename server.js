@@ -140,18 +140,30 @@ app.post('/items', jsonParser, function(request, response) {
 //Again this was set up like this as to allow for expansion test data 
 app.delete('/items/:id',function(request, response){
 <<<<<<< HEAD
+<<<<<<< HEAD
   
    console.log("clicked id "+request.params.id);//this gives me the id of what i clicked on 
    console.log("Look at me "+storage.items[request.params.id-1].id);//this is the index using that id -1 since that id starts at 1 
   // console.log(storage.items);//this is the array of itmes in the items array 
 =======
+=======
+>>>>>>> origin/master
 
 //sets the variable item to be the id of whatever the user clicked on
 //we parse this because it is currently a string and we will be comapring
 //it to a number. I then loop through Alexs array of items to see if i have
 //a matching id and if i do i remove that item from that given location 
 //then i respond back to the user with the updated list 
+<<<<<<< HEAD
 >>>>>>> 36618c4a782519b4f43b68e796f0e849478e045b
+=======
+=======
+  
+   console.log("clicked id "+request.params.id);//this gives me the id of what i clicked on 
+   console.log("Look at me "+storage.items[request.params.id-1].id);//this is the index using that id -1 since that id starts at 1 
+  // console.log(storage.items);//this is the array of itmes in the items array 
+>>>>>>> origin/pullrequest
+>>>>>>> origin/master
   var item = parseInt(request.params.id)
 
   for(var i = 0;i < storage.users[0].items.length;i++){
