@@ -1,10 +1,7 @@
 //Require Statments
 var express = require('express');
 
-<<<<<<< HEAD
-=======
 //Create a new instance of express
->>>>>>> 36618c4a782519b4f43b68e796f0e849478e045b
 var app = express();
 
 var bodyParser = require('body-parser');
@@ -67,13 +64,6 @@ storage.add('chicken',storage.users[1]);
 storage.add('stuff',storage.users[1]);
 storage.add('things',storage.users[1]);
 
-<<<<<<< HEAD
-console.log("this is whats in your storage.users "+storage.users[0]);
-
-
-
-=======
->>>>>>> 36618c4a782519b4f43b68e796f0e849478e045b
 //this is a call to the index.html file that is in the public folder 
 app.use(express.static('public'));
 
@@ -85,11 +75,6 @@ app.get('/items', function(request, response) {
   
   response.json(storage.users[0].items);
 
-<<<<<<< HEAD
-    //this returns the updatd array of items
-    response.json(storage.users);
-=======
->>>>>>> 36618c4a782519b4f43b68e796f0e849478e045b
 });
 
 //This is the users route this will show Alex and Jesus with all 
@@ -127,43 +112,19 @@ app.post('/items', jsonParser, function(request, response) {
     }
 
     var item = storage.add(request.body.name,storage.users[0]);
-<<<<<<< HEAD
 
-    console.log(request.body);
-=======
->>>>>>> 36618c4a782519b4f43b68e796f0e849478e045b
-
-    response.status(201).json(storage.users);
+    response.status(201).json(item);
 });
 
 //This route will delete an items from Alex's list of array items
 //Again this was set up like this as to allow for expansion test data 
 app.delete('/items/:id',function(request, response){
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-   console.log("clicked id "+request.params.id);//this gives me the id of what i clicked on 
-   console.log("Look at me "+storage.items[request.params.id-1].id);//this is the index using that id -1 since that id starts at 1 
-  // console.log(storage.items);//this is the array of itmes in the items array 
-=======
-=======
->>>>>>> origin/master
 
 //sets the variable item to be the id of whatever the user clicked on
 //we parse this because it is currently a string and we will be comapring
 //it to a number. I then loop through Alexs array of items to see if i have
 //a matching id and if i do i remove that item from that given location 
 //then i respond back to the user with the updated list 
-<<<<<<< HEAD
->>>>>>> 36618c4a782519b4f43b68e796f0e849478e045b
-=======
-=======
-  
-   console.log("clicked id "+request.params.id);//this gives me the id of what i clicked on 
-   console.log("Look at me "+storage.items[request.params.id-1].id);//this is the index using that id -1 since that id starts at 1 
-  // console.log(storage.items);//this is the array of itmes in the items array 
->>>>>>> origin/pullrequest
->>>>>>> origin/master
   var item = parseInt(request.params.id)
 
   for(var i = 0;i < storage.users[0].items.length;i++){
@@ -200,7 +161,3 @@ response.json(storage.users[0].items);
 });
 
 app.listen(process.env.PORT || 8080, process.env.IP);
-
-
-
-
