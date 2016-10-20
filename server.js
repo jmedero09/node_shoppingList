@@ -72,7 +72,8 @@ all the users in Alexs array
 did it this way just because the ui was not set up to register users
 it was just an extension test case*/
 app.get('/items', function(request, response) {
-  
+  //console.log(storage.users[0].items)
+  console.log(request.body);
   response.json(storage.users[0].items);
 
 });
@@ -105,7 +106,6 @@ app.get('/users/:name', function(request, response){
 //This route will post items to Alex array again the registered
 //Jesus user is test data for extension test
 app.post('/items', jsonParser, function(request, response) {
-
     if (!('name' in request.body)) {
 
         return response.sendStatus(400);
@@ -161,3 +161,12 @@ response.json(storage.users[0].items);
 });
 
 app.listen(process.env.PORT || 8080, process.env.IP);
+
+
+exports.app = app;
+exports.storage = storage;
+
+
+
+
+
